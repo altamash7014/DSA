@@ -11,9 +11,9 @@ public:
             if (arr[mid] == target)
                 return mid;
             else if (arr[mid] > target)
-                high = mid - 1;   // FIX
+                high = mid - 1;   
             else
-                left = mid + 1;   // FIX
+                left = mid + 1;   
         }
         return -1;
     }
