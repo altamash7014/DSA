@@ -5,7 +5,7 @@ class Node {
 
     Node(int x){
         data = x;
-        next = NULL;
+        next = nullptr;
     }
 
 }; */
@@ -13,20 +13,16 @@ class Node {
 class Solution {
   public:
     int getMiddle(Node* head) {
-        Node * temp= head;
-        Node * tempi= head;
-        int cnt =0;
-        while(temp!=NULL){
-            cnt++;
-            temp= temp->next;
+        // code here
+        Node* fast = head; 
+        Node* slow = head;
+        while(fast!=NULL && fast->next!= NULL){
+            slow= slow->next;
+            fast = fast->next->next;
         }
-        int ans = cnt/2 +1;
-        cnt=0;
-        while(tempi!=NULL && cnt<ans){
-            cnt++;
-            if(cnt == ans) break;
-            tempi= tempi->next;
-        }
-        return tempi->data;
+        return slow->data;
+        
+        
+        
     }
 };
