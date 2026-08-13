@@ -1,0 +1,24 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool flipEquiv(TreeNode* p, TreeNode* q) {
+        if(p == NULL || q == NULL)
+            return p == q;
+        if(p->val != q->val)return false;
+        bool same = flipEquiv(p->left, q->left) && flipEquiv(p->right, q->right);
+
+        bool flipped = flipEquiv(p->left, q->right) &&
+                       flipEquiv(p->right, q->left);
+        return same || flipped;
+    }
+};
