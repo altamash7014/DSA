@@ -1,25 +1,28 @@
-
 class Solution {
-  public:
-    int longestKSubstr(string &s, int k) {
-        // code here
-        map<char,int>mp;
-        int ans=-1;
-        int l=0,r=0;
-        int n=s.size();
-        while(r<n){
-            mp[s[r]]++;
-            while(mp.size()>k){
-                mp[s[l]]--;
-                if(mp[s[l]]==0) mp.erase(s[l]);
-                l++;
+public:
+    int longestKSubstr(string &arr, int k) {
+        unordered_map<int, int> freq;
+
+        int n = arr.size();
+        int j = 0;
+        int maxi = -1;
+
+        for(int i = 0; i < n; i++) {
+            freq[arr[i]-'a']++;
+
+            if(freq.size() > k) {
+                freq[arr[j]-'a']--;
+
+                if(freq[arr[j]-'a'] == 0) {
+                    freq.erase(arr[j]-'a');
+                }
+
+                j++;
             }
-            
-            if(mp.size()==k) ans=max(ans,r-l+1);
-            
-            r++;
-        }
-        
-        return ans;
+
+            if(freq.size() == k) {
+                maxi = max(maxi, i - j + 1);
+            }}
+        return maxi;
     }
 };
