@@ -18,7 +18,7 @@ public:
         bool leftt = isSameTree(p->left, q->left);
         bool rightt = isSameTree(p->right, q->right);
 
-        return leftt && rightt && (p->val == q->val);
+        return leftt == true && rightt ==  true && (p->val == q->val);
     }
 
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
